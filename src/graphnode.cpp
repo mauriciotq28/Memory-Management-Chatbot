@@ -10,8 +10,10 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-
-    delete _chatBot; 
+    // prevents to delete a nullptr pointer as a node can
+    // instanciate without point to chat bot
+    if (_chatBot != nullptr)
+        delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE

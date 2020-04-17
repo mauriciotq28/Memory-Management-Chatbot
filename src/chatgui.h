@@ -3,6 +3,9 @@
 
 #include <wx/wx.h>
 
+// Task 1
+#include <memory>
+
 class ChatLogic; // forward declaration
 
 // middle part of the window containing the dialog between user and chatbot
@@ -16,7 +19,8 @@ private:
     //// STUDENT CODE
     ////
 
-    ChatLogic *_chatLogic;
+    // Task 1 - _chatLogic is an exclusive resource to ChatbotPanelDialog
+    std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
     //// EOF STUDENT CODE
@@ -26,8 +30,9 @@ public:
     ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
     ~ChatBotPanelDialog();
 
-    // getter / setter
-    ChatLogic *GetChatLogicHandle() { return _chatLogic; }
+    // Task 1 - ChabotPanelDialog lends chatlogic though
+    // ChabotPanelDialog remains to own it.
+    ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);
