@@ -1,6 +1,9 @@
 #include "graphedge.h"
 #include "graphnode.h"
 
+// Task 3 - DEBUG
+#include <iostream>
+
 GraphNode::GraphNode(int id)
 {
     _id = id;
