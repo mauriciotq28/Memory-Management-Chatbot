@@ -1,9 +1,6 @@
 #include "graphedge.h"
 #include "graphnode.h"
 
-// Task 3 - DEBUG
-#include <iostream>
-
 GraphNode::GraphNode(int id)
 {
     _id = id;
@@ -11,15 +8,12 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    //// STUDENT CODE
-    ////
-    // prevents to delete a nullptr pointer as a node can
+    // Task 5 - GraphNode owns ChatBot
+    // Prevents to delete a nullptr pointer as a node can
     // instanciate without point to chat bot
     if (_chatBot != nullptr)
         delete _chatBot; 
 
-    ////
-    //// EOF STUDENT CODE
 }
 
 void GraphNode::AddToken(std::string token)

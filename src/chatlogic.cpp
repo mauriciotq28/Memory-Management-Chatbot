@@ -14,31 +14,12 @@
 
 ChatLogic::ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-
-    // create instance of chatbot
-  /*  _chatBot = new ChatBot("../images/chatbot.png");
-
-    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
-*/
-    ////
-    //// EOF STUDENT CODE
+ 
 }
 
 ChatLogic::~ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-    // delete all edges
-   /* for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-        delete *it;
-    }
-    */
-    ////
-    //// EOF STUDENT CODE
+
 }
 
 template <typename T>
@@ -147,7 +128,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
                         if (parentToken != tokens.end() && childToken != tokens.end())
                         {
-                            // Task 3
+                            // Task 3 - 
                             // get iterator on incoming and outgoing node via ID search
                             auto parentNode = std::find_if(_nodes.begin(), _nodes.end(), [&parentToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(parentToken->second); });
                             auto childNode = std::find_if(_nodes.begin(), _nodes.end(), [&childToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(childToken->second); });
@@ -210,14 +191,17 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
             }
         }
     }
-    // Task 5 - Creates a ChatBot instance on the stack and moves it to rootNode by move constructor
+    // Task 5 - Creates a ChatBot instance on the stack 
     ChatBot localBot("../images/chatbot.png");
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
+    
+    // Task 5 - Moves local chatBot
     _chatBot = new ChatBot(std::move(localBot));
     _chatBot->SetChatLogicHandle(this);
 
     // add chatbot to graph root node
     _chatBot->SetRootNode(rootNode);
+    // Task 5 - Pass the Chatbot ownership to rootNode so GraphNode is responsible his deallocation
     rootNode->MoveChatbotHere(_chatBot);
     
     ////
