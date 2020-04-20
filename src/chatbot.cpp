@@ -48,7 +48,7 @@ ChatBot::~ChatBot()
 // Copy Constructor (Shallow Copy)
 ChatBot::ChatBot(const ChatBot &source)
 {
-    std::cout << "ChatBot copy constructor" << std::endl;
+    std::cout << "ChatBot Copy Constructor" << std::endl;
     _image = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
@@ -58,9 +58,12 @@ ChatBot::ChatBot(const ChatBot &source)
 // Task 2 - Copy assigment operator (Shallow Copy)
 ChatBot &ChatBot::operator=(const ChatBot &source)
 {
-    std::cout << "ChatBot assigment operator" << std::endl;
-    if (this == &source)
+    std::cout << "ChatBot Assigment Operator" << std::endl;
+    if (this != &source)
     {
+        if (_image != NULL)
+            delete _image
+
         _image = source._image;
         _currentNode = source._currentNode;
         _rootNode = source._rootNode;
@@ -72,7 +75,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
 // Task 2 - Move Constructor
 ChatBot::ChatBot(ChatBot &&source)
 {
-    std::cout << "ChatBot move constructor" << std::endl;
+    std::cout << "ChatBot Move constructor" << std::endl;
     _image = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
@@ -87,9 +90,12 @@ ChatBot::ChatBot(ChatBot &&source)
 // Task 2 - Move Assigment Operator
 ChatBot &ChatBot::operator=(ChatBot &&source)
 {
-    std::cout << "ChatBot move operator" << std::endl;
-    if (this == &source)
+    std::cout << "ChatBot Move Assigment operator" << std::endl;
+    if (this != &source)
     {
+        if (_image != NULL)
+            delete _image;
+
         _image = source._image;
         _currentNode = source._currentNode;
         _rootNode = source._rootNode;
