@@ -32,7 +32,7 @@ public:
 
     // Task 1 - ChabotPanelDialog lends chatlogic though
     // ChabotPanelDialog remains to own it.
-    ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
+    ChatLogic &GetChatLogicHandle() { return *_chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);
