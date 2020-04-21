@@ -47,12 +47,12 @@ void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 ////
 //// EOF STUDENT CODE
 
-GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
+GraphEdge &GraphNode::GetChildEdgeAtIndex(int index)
 {
     //// STUDENT CODE
     ////
 
-    return _childEdges[index].get();
+    return *_childEdges[index].get();
 
     ////
     //// EOF STUDENT CODE
