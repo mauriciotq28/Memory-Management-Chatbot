@@ -62,7 +62,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
     if (this != &source)
     {
         if (_image != NULL)
-            delete _image
+            delete _image;
 
         _image = source._image;
         _currentNode = source._currentNode;
