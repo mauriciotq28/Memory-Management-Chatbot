@@ -29,7 +29,7 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T 
     auto token = tokens.begin();
     while (true)
     {
-        token = std::find_if(token, tokens.end(), [&tokenID](const std::pair<std::string, std::string> &pair) { return pair.first == tokenID;; });
+        token = std::find_if(token, tokens.end(), [&tokenID](std::pair<std::string, std::string> &pair) { return pair.first == tokenID;; });
         if (token != tokens.end())
         {
             element.AddToken(token->second); // add new keyword to edge
@@ -81,11 +81,11 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
             }
 
             // process tokens for current line
-            auto type = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "TYPE"; });
+            auto type = std::find_if(tokens.begin(), tokens.end(), [](std::pair<std::string, std::string> &pair) { return pair.first == "TYPE"; });
             if (type != tokens.end())
             {
                 // check for id
-                auto idToken = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "ID"; });
+                auto idToken = std::find_if(tokens.begin(), tokens.end(), [](std::pair<std::string, std::string> &pair) { return pair.first == "ID"; });
                 if (idToken != tokens.end())
                 {
                     // extract id from token
@@ -123,8 +123,8 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                         ////
 
                         // find tokens for incoming (parent) and outgoing (child) node
-                        auto parentToken = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "PARENT"; });
-                        auto childToken = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "CHILD"; });
+                        auto parentToken = std::find_if(tokens.begin(), tokens.end(), [](std::pair<std::string, std::string> &pair) { return pair.first == "PARENT"; });
+                        auto childToken = std::find_if(tokens.begin(), tokens.end(), [](std::pair<std::string, std::string> &pair) { return pair.first == "CHILD"; });
 
                         if (parentToken != tokens.end() && childToken != tokens.end())
                         {
@@ -197,7 +197,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     
     // Task 5 - Moves local chatBot
     _chatBot = new ChatBot(std::move(localBot));
-    _chatBot->SetChatLogicHandle(this);
+    _chatBot->SetChatLogicHandle(*this);
 
     // add chatbot to graph root node
     _chatBot->SetRootNode(rootNode);

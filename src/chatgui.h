@@ -30,8 +30,7 @@ public:
     ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
     ~ChatBotPanelDialog();
 
-    // Task 1 - ChabotPanelDialog lends chatlogic though
-    // ChabotPanelDialog remains to own it.
+    // Task 1 - ChabotPanelDialog lends chatlogic but remains to own it.
     ChatLogic &GetChatLogicHandle() { return *_chatLogic.get(); }
 
     // events

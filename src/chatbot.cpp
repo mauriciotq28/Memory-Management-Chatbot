@@ -22,12 +22,13 @@ ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
     
+    // load image into heap memory
+    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
 
-    // load image into heap memory
-    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
 ChatBot::~ChatBot()
