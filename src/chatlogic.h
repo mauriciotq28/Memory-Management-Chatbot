@@ -19,7 +19,6 @@ private:
     // data handles (owned)
     // Task 3 - Instances of GraphNodes to which the vector elements refer are exclusively owned by the class ChatLogic
     std::vector<std::unique_ptr<GraphNode>> _nodes;
-    std::vector<GraphEdge *> _edges;
 
     ////
     //// EOF STUDENT CODE
